@@ -32,7 +32,7 @@ public class MyPanel extends JPanel {
     }
 
     public void update1(Graphics g) {
-        //permbajtja e paneles qe e ka matricen 
+        //permbajtja e paneles qe e ka matricen
         g.drawString("Hi", 20, 20);
     }
 

@@ -45,7 +45,6 @@ public class ReadAndWrite {
         int i = 0;
         while (i < input.length() && !found) {
             try {
-            //23233 , 3323
                 int a = Integer.parseInt("" + input.charAt(i));
             } catch (Exception e) {
                 ans[0] = Integer.parseInt(input.substring(0, i));
@@ -65,13 +64,13 @@ public class ReadAndWrite {
         ans[1] = Integer.parseInt(a1);
         return ans;
     }
-    
-    public String[][] write(double[][] p1,double[][] p2){
+
+    public String[][] write(double[][] p1, double[][] p2) {
         String[][] ans = new String[p1.length][p1[0].length];
         for (int i = 0; i < ans.length; i++) {
             for (int j = 0; j < ans[0].length; j++) {
-                ans[i][j] = p1[i][j]+" ,"+p2[i][j];
-                
+                ans[i][j] = p1[i][j] + " ," + p2[i][j];
+
             }
         }
         return ans;

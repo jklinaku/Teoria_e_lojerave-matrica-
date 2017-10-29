@@ -20,36 +20,50 @@ import javax.swing.JTextField;
  * @author Sead Mejzini
  */
 public class MyFrame extends JFrame {
+
     protected JTextField[][] jf;
+    protected ElementPanel[][] jp;
+
     public MyFrame() {
         int row = Integer.parseInt(JOptionPane.showInputDialog("Shtypni nr. rreshtave"));
         int col = Integer.parseInt(JOptionPane.showInputDialog("Shtypni nr. kolonave"));
-        
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
         Container cp = getContentPane();
         cp.setLayout(new BorderLayout());
         JLabel label = new JLabel("Mbushni matricen me te dhena");
         JPanel labelPanel = new JPanel();
         labelPanel.add(label);
         labelPanel.setEnabled(true);
-        JPanel panel1 = new JPanel(new GridLayout(row+1,col+1));
-        jf = new JTextField[row+1][col+1]; 
-        for (int i = 0; i <=row; i++) {
-            for (int j = 0; j <=col; j++) {
-                if (i==0&&j==0){
-                    jf[0][0] = new JTextField("L1\\L2");
-                    panel1.add(jf[0][0]);
-                    continue;
-                } 
-                jf[i][j] = new JTextField();
-                panel1.add(jf[i][j]);
+        JPanel panel1 = new JPanel(new GridLayout(row + 1, col + 1));
+        jf = new JTextField[row + 1][col + 1];
+        jp = new ElementPanel[row][col];
+        for (int i = 0; i <= row; i++) {
+            for (int j = 0; j <= col; j++) {
+                if (i == 0 || j == 0) {
+                    if (i == 0 && j == 0) {
+                        JLabel label1 = new JLabel("L1\\L2");
+                        panel1.add(label1);
+                        continue;
+                    } else if (i == 0) {
+                        jf[0][j] = new JTextField();
+                        panel1.add(jf[0][j]);
+                    } else if (j == 0) {
+                        jf[i][0] = new JTextField();
+                        panel1.add(jf[i][0]);
+                    }
+                } else {
+                    JTextField[] temp = {new JTextField(),new JTextField()};
+                    jp[i-1][j-1] = new ElementPanel(temp);
+                    panel1.add(jp[i-1][j-1]);
+                }
             }
         }
-        cp.add(labelPanel,BorderLayout.NORTH);
-        cp.add(panel1,BorderLayout.CENTER);
+        cp.add(labelPanel, BorderLayout.NORTH);
+        cp.add(panel1, BorderLayout.CENTER);
         JPanel panel2 = new JPanel(new BorderLayout());
         JButton b = new Start(this);
-        panel2.add(b,BorderLayout.WEST);
-        cp.add(panel2,BorderLayout.SOUTH);
+        panel2.add(b, BorderLayout.WEST);
+        cp.add(panel2, BorderLayout.SOUTH);
         pack();
         setVisible(true);
     }

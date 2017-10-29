@@ -27,16 +27,30 @@ public class Start extends JButton implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         JTextField jtf[][] = mf.jf;
-        double[][] temp = new double[jtf.length][jtf[0].length];
+        ElementPanel ep[][] = mf.jp;
+        double[][] temp1 = new double[jtf.length - 1][jtf[0].length - 1];
+        double[][] temp2 = new double[jtf.length - 1][jtf[0].length - 1];
+        String[] l1 = new String[jtf.length - 1];
+        String[] l2 = new String[jtf[0].length - 1];
         for (int i = 0; i < jtf.length; i++) {
             for (int j = 0; j < jtf[0].length; j++) {
-                if (i == 0 && j == 0) {
-                    continue;
+                if (i == 0 || j == 0) {
+                    if (i == 0 && j == 0) {
+                        continue;
+                    }
+                    else if(i==0){
+                        l2[j-1] = jtf[0][j].getText();
+                    }
+                    else if(j==0){
+                        l1[i-1] = jtf[i][0].getText();
+                    }
+                } else {
+                    temp1[i-1][j-1] = Double.parseDouble(ep[i-1][j-1].input[0].getText());
+                    temp2[i-1][j-1] = Double.parseDouble(ep[i-1][j-1].input[1].getText());
                 }
-                temp[i][j] = Double.parseDouble(jtf[i][j].getText());
             }
         }
         mf.dispose();
-        MyFrame1 myFrame1 = new MyFrame1(temp,temp);
+        MyFrame1 myFrame1 = new MyFrame1(temp1, temp2,l1,l2);
     }
 }
