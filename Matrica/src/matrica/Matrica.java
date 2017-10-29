@@ -16,10 +16,5 @@ public class Matrica {
 //        Matrix mat = m.update(m, 2, false);
 //        mat.printTest(mat);
         MyFrame m = new MyFrame();
-
-
-
-
-
     }
 }

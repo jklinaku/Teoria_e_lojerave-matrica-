@@ -16,7 +16,7 @@ import javax.swing.JTextField;
  */
 public class Start extends JButton implements ActionListener {
 
-    private MyFrame mf;
+    private final MyFrame mf;
 
     public Start(MyFrame mf) {
         super("START");
@@ -37,6 +37,6 @@ public class Start extends JButton implements ActionListener {
             }
         }
         mf.dispose();
-        new MyFrame1(temp);
+        MyFrame1 myFrame1 = new MyFrame1(temp,temp);
     }
 }

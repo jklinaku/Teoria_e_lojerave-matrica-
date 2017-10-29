@@ -6,7 +6,6 @@
 package matrica;
 
 import java.awt.BorderLayout;
-import java.awt.Component;
 import java.awt.Container;
 import java.awt.GridLayout;
 import javax.swing.JButton;
@@ -39,7 +38,7 @@ public class MyFrame extends JFrame {
                 if (i==0&&j==0){
                     jf[0][0] = new JTextField("L1\\L2");
                     panel1.add(jf[0][0]);
-                    j+=1;
+                    continue;
                 } 
                 jf[i][j] = new JTextField();
                 panel1.add(jf[i][j]);
