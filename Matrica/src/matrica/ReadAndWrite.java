@@ -45,6 +45,7 @@ public class ReadAndWrite {
         int i = 0;
         while (i < input.length() && !found) {
             try {
+            //23233 , 3323
                 int a = Integer.parseInt("" + input.charAt(i));
             } catch (Exception e) {
                 ans[0] = Integer.parseInt(input.substring(0, i));
