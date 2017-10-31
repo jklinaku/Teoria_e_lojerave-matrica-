@@ -13,13 +13,17 @@ import javax.swing.JPanel;
  * @author Sead Mejzini
  */
 public class MyPanel extends JPanel {
-
+    
     private Kalkulimi_i_problemit kp;
+    private PanelContent pc;
     private final boolean isMatix;
+    Object[][] content;
 
     public MyPanel(Kalkulimi_i_problemit kp, boolean isMatrix) {
         this.kp = kp;
         this.isMatix = isMatrix;
+        pc = new PanelContent(kp);
+        content = pc.getContent();
     }
 
     @Override
@@ -45,4 +49,5 @@ public class MyPanel extends JPanel {
     public void paintM(Graphics g){
         
     }
+    
 }

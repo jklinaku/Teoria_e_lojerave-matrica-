@@ -52,9 +52,9 @@ public class MyFrame extends JFrame {
                         panel1.add(jf[i][0]);
                     }
                 } else {
-                    JTextField[] temp = {new JTextField(),new JTextField()};
-                    jp[i-1][j-1] = new ElementPanel(temp);
-                    panel1.add(jp[i-1][j-1]);
+                    JTextField[] temp = {new JTextField(), new JTextField()};
+                    jp[i - 1][j - 1] = new ElementPanel(temp);
+                    panel1.add(jp[i - 1][j - 1]);
                 }
             }
         }
@@ -66,9 +66,5 @@ public class MyFrame extends JFrame {
         cp.add(panel2, BorderLayout.SOUTH);
         pack();
         setVisible(true);
-    }
-
-    public JTextField[][] getJf() {
-        return jf;
     }
 }
