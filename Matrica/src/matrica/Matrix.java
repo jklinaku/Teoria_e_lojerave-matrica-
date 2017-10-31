@@ -6,8 +6,8 @@ package matrica;
  */
 public class Matrix {
 
-    private int row = 1;
-    private int col = 1;
+    private int row;
+    private int col;
     private double[][] content;
 
     public Matrix() {
@@ -25,6 +25,8 @@ public class Matrix {
 
     public void setContent(double[][] content) {
         this.content = content;
+        row = content.length;
+        col = content[0].length;
     }
 
     public int getRow() {
@@ -59,7 +61,7 @@ public class Matrix {
         } else {
             ans = new double[temp.length][temp[0].length - 1];
             for (int i = 0; i < ans.length; i++) {
-                for (int j = 0; j < ans.length; j++) {
+                for (int j = 0; j < ans[0].length; j++) {
                     ans[i][j] = (j < a) ? temp[i][j] : temp[i][j + 1];
                 }
             }

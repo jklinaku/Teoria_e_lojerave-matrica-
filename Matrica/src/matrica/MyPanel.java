@@ -41,4 +41,8 @@ public class MyPanel extends JPanel {
         g.drawString("Hello", 30, 30);
 
     }
+    
+    public void paintM(Graphics g){
+        
+    }
 }
