@@ -6,7 +6,7 @@ package matrica;
  */
 public class Kalkulimi_i_problemit {
 
-    private int counter;
+    protected int counter;
     private int maxCounter;
     private final Matrix[] m = new Matrix[2];
     private final Manipulimi_me_matrica[] mm = new Manipulimi_me_matrica[2];
@@ -31,14 +31,6 @@ public class Kalkulimi_i_problemit {
         return primaryMatrix;
     }
 
-    public boolean updateCounter(int i) {
-        if ((i == -1 && counter == 0) || (i == 1 && counter == maxCounter)) {
-            return false;
-        }
-        counter += i;
-        return true;
-    }
-
     public Object[] updateMatrix(boolean b) {
         Object[] ans = new Object[4];
         int mr = m[0].getRow();
@@ -51,8 +43,13 @@ public class Kalkulimi_i_problemit {
                 if (dr != -1) {
                     for (int i = 0; i < mr; i++) {
                         if (i != dr) {
-                            m[0] = m[0].update(m[0], i, b);
-                            m[1] = m[1].update(m[1], i, b);
+                            try {
+                                m[0] = m[0].update(m[0], i, b);
+                                m[0].printTest(m[0]);
+                                m[1] = m[1].update(m[1], i, b);
+                                m[1].printTest(m[1]);
+                            } catch (Exception e) {
+                            }
                             l1 = removeStrategy(l1, i);
                         }
                     }
@@ -127,5 +124,9 @@ public class Kalkulimi_i_problemit {
 
     public int getCounter() {
         return counter;
+    }
+
+    public void setCounter(int counter) {
+        this.counter = counter;
     }
 }

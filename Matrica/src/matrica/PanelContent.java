@@ -26,16 +26,19 @@ public class PanelContent {
         boolean initial = true;
         Object[] temp = new Object[4];
         while (!end) {
-            temp = kp.updateMatrix(initial);
-            int t1 = ((Matrix) temp[0]).getRow();
-            int t2 = ((Matrix) temp[1]).getCol();
-            if (areSame(temp, content[i - 1]) || (t1 == 0) || (t2 == 0)) {
-                end = true;
-            } else {
-                content = addObject(content, temp);
-                initial = !initial;
-                i++;
-            }
+           // try {
+                temp = kp.updateMatrix(initial);
+                int t1 = ((Matrix) temp[0]).getRow();
+                int t2 = ((Matrix) temp[1]).getCol();
+                if (areSame(temp, content[i - 1]) || (t1 == 0) || (t2 == 0)) {
+                    end = true;
+                } else {
+                    content = addObject(content, temp);
+                    initial = !initial;
+                    i++;
+                }
+           // } catch (Exception e) {
+            //}
         }
     }
 

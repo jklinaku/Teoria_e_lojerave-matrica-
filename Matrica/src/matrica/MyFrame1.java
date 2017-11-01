@@ -42,9 +42,9 @@ public class MyFrame1 extends JFrame {
 
         cp.add(panel1, BorderLayout.NORTH);
         cp.add(panel3, BorderLayout.CENTER);
-        JButton b1 = new JButton("A");
-
-        JButton b2 = new JButton("b");
+        Counter counter = new Counter(k.getCounter());
+        JButton b1 = new Button_back((MyPanel)panel_21 , counter);
+        JButton b2 = new Button_next((MyPanel)panel_21 , counter);
         JPanel panel4 = new JPanel(new FlowLayout());
         JPanel panel4_1 = new JPanel(new BorderLayout());
         panel4.setSize(this.getWidth(), 50);

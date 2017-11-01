@@ -39,18 +39,16 @@ public class MyFrame extends JFrame {
         jp = new ElementPanel[row][col];
         for (int i = 0; i <= row; i++) {
             for (int j = 0; j <= col; j++) {
-                if (i == 0 || j == 0) {
-                    if (i == 0 && j == 0) {
-                        JLabel label1 = new JLabel("L1\\L2");
-                        panel1.add(label1);
-                        continue;
-                    } else if (i == 0) {
-                        jf[0][j] = new JTextField();
-                        panel1.add(jf[0][j]);
-                    } else if (j == 0) {
-                        jf[i][0] = new JTextField();
-                        panel1.add(jf[i][0]);
-                    }
+                if (i == 0 && j == 0) {
+                    JLabel label1 = new JLabel("L1\\L2");
+                    panel1.add(label1);
+                    continue;
+                } else if (i == 0) {
+                    jf[0][j] = new JTextField();
+                    panel1.add(jf[0][j]);
+                } else if (j == 0) {
+                    jf[i][0] = new JTextField();
+                    panel1.add(jf[i][0]);
                 } else {
                     JTextField[] temp = {new JTextField(), new JTextField()};
                     jp[i - 1][j - 1] = new ElementPanel(temp);

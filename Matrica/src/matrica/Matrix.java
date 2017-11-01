@@ -79,4 +79,13 @@ public class Matrix {
             System.out.println("");
         }
     }
+
+    public void printText(Matrix[] m) {
+        for (int i = 0; i < m[0].getRow(); i++) {
+            for (int j = 0; j < m[0].getCol(); j++) {
+                System.out.print("( " + m[0].getContent()[i][j] + ",  " + m[1].getContent()[i][j] + " )");
+            }
+            System.out.println();
+        }
+    }
 }
