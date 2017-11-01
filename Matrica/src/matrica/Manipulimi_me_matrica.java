@@ -162,7 +162,6 @@ public class Manipulimi_me_matrica {
         return ans;
     }
 }
-
 //    public boolean isDominated(int j, boolean isRow) {
 //        boolean ans = true;
 //        if (isRow) {

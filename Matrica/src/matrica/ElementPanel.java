@@ -5,8 +5,8 @@
  */
 package matrica;
 
-import java.awt.Graphics;
 import java.awt.GridLayout;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -17,15 +17,29 @@ import javax.swing.JTextField;
 public class ElementPanel extends JPanel {
 
     protected JTextField[] input;
+    protected JLabel[] label;
 
     public ElementPanel(JTextField[] input) {
-        super(new GridLayout(1,2));
+        super(new GridLayout(1, 2));
         this.input = input;
+        insert(this.input);
     }
 
-    @Override
-    public void paintComponent(Graphics g) {
+    public ElementPanel(JLabel[] label) {
+        super(new GridLayout(1, 2));
+        this.label = label;
+        insert(this.label);
+    }
+
+    public void insert(JTextField[] input) {
         this.add(input[0]);
         this.add(input[1]);
+    }
+
+    public void insert(JLabel[] label) {
+        label[0].setText("( " + label[0].getText() + " ,");
+        this.add(label[0]);
+        label[1].setText(label[1].getText()+" )");
+        this.add(label[1]);
     }
 }

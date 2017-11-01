@@ -75,29 +75,6 @@ public class Matrica {
             kp.printS(s[1]);
             m[1].printTest(m[1]);
         }
-        System.out.println(kp.getCounter());
-//        kp.updateMatrix(true);
-//
-//        kp.updateMatrix(false);
-//
-//        kp.updateMatrix(true);
-//        m = kp.getM();
-//        String[] temp = kp.getL1();
-//        for (String temp1 : temp) {
-//            System.out.println(temp1);
-//        }
-//        temp = kp.getL2();
-//        for (String temp1 : temp) {
-//            System.out.println(temp1);
-//        }
-//        m[0].printTest(m[0]);
-//        System.out.println();
-//        m[1].printTest(m[1]);
-
-//        temp = kp.removeStrategy(a, 2);
-//        for (String temp1 : temp) {
-//            System.out.println(temp1);
-//        }
-        //MyFrame m = new MyFrame();
+        MyFrame mm = new MyFrame();
     }
 }
