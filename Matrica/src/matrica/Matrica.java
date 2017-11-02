@@ -77,22 +77,22 @@ public class Matrica {
 //            kp.printS(s[1]);
 //            m[1].printTest(m[1]);
 //        }
-        double[][] a = testM;
-        double[][] b = testM2;
-        String[] l1 = {"L", "C", "R"};
-        String[] l2 = {"U", "M", "D"};
-        Kalkulimi_i_problemit kp = new Kalkulimi_i_problemit(a, b, l1, l2);
-        PanelContent pc = new PanelContent(kp);
-        pc.calculateMatrixes();
-        Object[][] result = pc.getContent();
-        for (Object[] temp : result) {
-            Matrix[] m = {(Matrix) (temp[0]), (Matrix) (temp[1])};
-            String[] s1 = (String[]) temp[2];
-            String[] s2 = (String[]) temp[3];
-            String[][] aa = {s1, s2};
-            m[0].printText(m);
-            System.out.println();
-        } 
-//MyFrame mm = new MyFrame();
+//        double[][] a = testM;
+//        double[][] b = testM2;
+//        String[] l1 = {"L", "C", "R"};
+//        String[] l2 = {"U", "M", "D"};
+//        Kalkulimi_i_problemit kp = new Kalkulimi_i_problemit(a, b, l1, l2);
+//        PanelContent pc = new PanelContent(kp);
+//        pc.calculateMatrixes();
+//        Object[][] result = pc.getContent();
+//        for (Object[] temp : result) {
+//            Matrix[] m = {(Matrix) (temp[0]), (Matrix) (temp[1])};
+//            String[] s1 = (String[]) temp[2];
+//            String[] s2 = (String[]) temp[3];
+//            String[][] aa = {s1, s2};
+//            m[0].printText(m);
+//            System.out.println();
+//        } 
+MyFrame mm = new MyFrame();
     }
 }

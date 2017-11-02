@@ -49,6 +49,7 @@ public class Kalkulimi_i_problemit {
                                 m[1] = m[1].update(m[1], i, b);
                                 m[1].printTest(m[1]);
                             } catch (Exception e) {
+                                counter--;
                             }
                             l1 = removeStrategy(l1, i);
                         }
@@ -56,11 +57,16 @@ public class Kalkulimi_i_problemit {
                     counter++;
                 } else if (mm[0].hasDominated(drs)) {
                     for (int i = 0; i < mr; i++) {
+                        try{
                         if (drs[i] == 1) {
                             m[0] = m[0].update(m[0], i, b);
                             m[1] = m[1].update(m[1], i, b);
                             l1 = removeStrategy(l1, i);
+                        }}
+                        catch (Exception e ){
+                            counter--;
                         }
+                        
                     }
                     counter++;
                 }
@@ -69,20 +75,25 @@ public class Kalkulimi_i_problemit {
                 int[] drs = mm[0].dominated_cols(false);
                 if (dr != -1) {
                     for (int i = 0; i < mc; i++) {
+                       try{
                         if (i != dr) {
                             m[0] = m[0].update(m[0], i, b);
                             m[1] = m[1].update(m[1], i, b);
                             l2 = removeStrategy(l2, i);
-                        }
+                        }}
+                       catch (Exception e ){counter--;}
                     }
                     counter++;
                 } else if (mm[0].hasDominated(drs)) {
                     for (int i = 0; i < mc; i++) {
+                        try{
                         if (drs[i] == 1) {
                             m[0] = m[0].update(m[0], i, b);
                             m[1] = m[1].update(m[1], i, b);
                             l2 = removeStrategy(l2, i);
-                        }
+                        }}
+                        catch (Exception e ){
+                        counter--;}
                     }
                     counter++;
                 }

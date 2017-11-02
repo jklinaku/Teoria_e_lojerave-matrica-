@@ -10,6 +10,7 @@ import java.awt.GridLayout;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 /**
  *
@@ -20,7 +21,7 @@ public class MyPanel extends JPanel {
     private Kalkulimi_i_problemit kp;
     private PanelContent pc;
     private final boolean isMatix;
-    Object[][] content;
+    protected Object[][] content;
 
     public MyPanel(Kalkulimi_i_problemit kp, boolean isMatrix) {
         super(new GridLayout());
@@ -42,7 +43,7 @@ public class MyPanel extends JPanel {
     }
 
     public void update1(int count) {
-        //removeAll();
+        removeAll();
         Object[] temp = content[count];
         Matrix[] m = {(Matrix) (temp[0]), (Matrix) (temp[1])};
         
@@ -74,10 +75,13 @@ public class MyPanel extends JPanel {
             }
         }
         m[0].printText(m);
-        repaint();
+        revalidate();
+       // repaint();
     }
 
     public void update2(int count) {
+        add(new JLabel("Do te vije se shpejti!!!!!"));
+        
 
     }
 }
