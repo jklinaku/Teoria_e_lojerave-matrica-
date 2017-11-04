@@ -10,7 +10,6 @@ import java.awt.GridLayout;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 
 /**
  *
@@ -28,7 +27,6 @@ public class MyPanel extends JPanel {
         this.kp = kp;
         this.isMatix = isMatrix;
         pc = new PanelContent(kp);
-        pc.calculateMatrixes();
         content = pc.getContent();
         setBorder(BorderFactory.createLineBorder(Color.black));
         update(0);
@@ -46,10 +44,9 @@ public class MyPanel extends JPanel {
         removeAll();
         Object[] temp = content[count];
         Matrix[] m = {(Matrix) (temp[0]), (Matrix) (temp[1])};
-        
         String[] s1 = (String[]) temp[2];
         String[] s2 = (String[]) temp[3];
-        String[][] a = {s1,s2};
+        String[][] a = {s1, s2};
         setLayout(new GridLayout(s1.length + 1, s2.length + 1));
         for (int i = 0; i <= s1.length; i++) {
             for (int j = 0; j <= s2.length; j++) {
@@ -74,14 +71,10 @@ public class MyPanel extends JPanel {
                 }
             }
         }
-        m[0].printText(m);
         revalidate();
-       // repaint();
     }
 
     public void update2(int count) {
-        add(new JLabel("Do te vije se shpejti!!!!!"));
-        
-
+        // add(new JLabel("Do te vije se shpejti!!!!!"));
     }
 }

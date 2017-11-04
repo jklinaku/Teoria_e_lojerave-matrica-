@@ -88,4 +88,12 @@ public class Matrix {
             System.out.println();
         }
     }
+
+    public int[] remove(int[] a, int i) {
+        int[] ans = new int[a.length - 1];
+        for (int j = 0; j < a.length - 1; j++) {
+            ans[j] = (i < j) ? a[j] : a[j + 1];
+        }
+        return ans;
+    }
 }

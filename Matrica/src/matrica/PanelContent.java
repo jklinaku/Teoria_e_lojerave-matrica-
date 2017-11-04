@@ -11,34 +11,24 @@ package matrica;
  */
 public class PanelContent {
 
-    private Kalkulimi_i_problemit kp;
+    private final Kalkulimi_i_problemit kp;
     private Object[][] content;
 
     public PanelContent(Kalkulimi_i_problemit kp) {
         this.kp = kp;
         content = new Object[1][4];
         content[0] = kp.getPrimaryMatrix();
+        this.calculateMatrixes();
     }
 
     public void calculateMatrixes() {
-        int i = 1;
-        boolean end = false;
+        Matrix tempM = (Matrix) (content[0][0]);
         boolean initial = true;
-        Object[] temp = new Object[4];
-        while (!end) {
-           // try {
-                temp = kp.updateMatrix(initial);
-                int t1 = ((Matrix) temp[0]).getRow();
-                int t2 = ((Matrix) temp[1]).getCol();
-                if (areSame(temp, content[i - 1]) || (t1 == 0) || (t2 == 0)) {
-                    end = true;
-                } else {
-                    content = addObject(content, temp);
-                    initial = !initial;
-                    i++;
-                }
-           // } catch (Exception e) {
-            //}
+        while (!(tempM.getRow() == 1 && tempM.getCol() == 1)) {
+            Object[] temp = kp.updateMatrix(initial);
+            tempM = (Matrix) (temp[0]);
+            content = addObject(content, temp);
+            initial = !initial;
         }
     }
 

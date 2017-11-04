@@ -6,9 +6,13 @@ package matrica;
  */
 public class Manipulimi_me_matrica {
 
-    private final Matrix m;
+    private Matrix m;
 
     public Manipulimi_me_matrica(Matrix m) {
+        this.m = m;
+    }
+
+    public void setM(Matrix m) {
         this.m = m;
     }
 
@@ -114,7 +118,7 @@ public class Manipulimi_me_matrica {
     public int[][] dominated_col() {
         int[][] ans = new int[m.getCol()][m.getCol()];
         for (int i = 0; i < ans.length; i++) {
-            boolean[] a = this.dominated_check(i, false,true);
+            boolean[] a = this.dominated_check(i, false, true);
             for (int k = 0; k < ans.length; k++) {
                 ans[i][k] = a[k] ? 1 : 0;
                 System.out.print(ans[i][k]);
@@ -161,6 +165,68 @@ public class Manipulimi_me_matrica {
         }
         return ans;
     }
+
+    public int[] smallestSum(boolean isRow) {
+        double tempS;
+        double[] sum;
+        int[] ans;
+        if (isRow) {
+            ans = new int[m.getRow()];
+            sum = new double[m.getRow()];
+            for (int i = 0; i < m.getRow(); i++) {
+                sum[i] = rowSum(m.getContentRow(i));
+            }
+            tempS = findMin(sum, sum.length);
+            boolean allSame = true;
+            for (int i = 0; i < sum.length; i++) {
+                ans[i] = tempS == sum[i] ? 1 : 0;
+                allSame = allSame && ans[i] == 1;
+            }
+            if (allSame) {
+                ans[0] = 0;
+            }
+        } else {
+            ans = new int[m.getCol()];
+            sum = new double[m.getCol()];
+            for (int i = 0; i < m.getCol(); i++) {
+                sum[i] = rowSum(m.getContentCol(i));
+            }
+            tempS = findMin(sum, sum.length);
+            System.out.println(tempS);
+            boolean allSame = true;
+            for (int i = 0; i < sum.length; i++) {
+                ans[i] = tempS == sum[i] ? 1 : 0;
+                allSame = allSame && ans[i] == 1;
+            }
+            if (allSame) {
+                ans[0] = 0;
+            }
+        }
+        return ans;
+    }
+
+    public double findMin(double[] data, int size) {
+        double temp;
+        if (size == 1) {
+            return data[0];
+        } else {
+            temp = findMin(data, size - 1);
+            if (temp <= data[size - 1]) {
+                return temp;
+            } else {
+                return data[size - 1];
+            }
+        }
+    }
+
+    public double rowSum(double[] input) {
+        double ans = 0.0;
+        for (int i = 0; i < input.length; i++) {
+            ans += input[i];
+        }
+        return ans;
+    }
+
 }
 //    public boolean isDominated(int j, boolean isRow) {
 //        boolean ans = true;
