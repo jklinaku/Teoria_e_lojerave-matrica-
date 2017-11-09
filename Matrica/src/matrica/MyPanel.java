@@ -43,7 +43,9 @@ public class MyPanel extends JPanel {
     public void update1(int count) {
         removeAll();
         Object[] temp = content[count];
-        Matrix[] m = {(Matrix) (temp[0]), (Matrix) (temp[1])};
+        Matrix[] m = new Matrix[2];
+        m[0] = (Matrix) (temp[0]);
+        m[1] = (Matrix) (temp[1]);
         String[] s1 = (String[]) temp[2];
         String[] s2 = (String[]) temp[3];
         String[][] a = {s1, s2};
@@ -75,6 +77,5 @@ public class MyPanel extends JPanel {
     }
 
     public void update2(int count) {
-        // add(new JLabel("Do te vije se shpejti!!!!!"));
     }
 }

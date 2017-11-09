@@ -8,6 +8,7 @@ package matrica;
 import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.GridLayout;
+import java.awt.HeadlessException;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -25,8 +26,8 @@ public class MyFrame extends JFrame {
     protected ElementPanel[][] jp;
 
     public MyFrame() {
-        int row = Integer.parseInt(JOptionPane.showInputDialog("Shtypni nr. rreshtave"));
-        int col = Integer.parseInt(JOptionPane.showInputDialog("Shtypni nr. kolonave"));
+        int row = RCnum("rreshtave");
+        int col = RCnum("kolonave");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         Container cp = getContentPane();
         cp.setLayout(new BorderLayout());
@@ -42,7 +43,7 @@ public class MyFrame extends JFrame {
                 if (i == 0 && j == 0) {
                     JLabel label1 = new JLabel("L1\\L2");
                     panel1.add(label1);
-                    continue;
+                    //continue;
                 } else if (i == 0) {
                     jf[0][j] = new JTextField();
                     panel1.add(jf[0][j]);
@@ -64,5 +65,21 @@ public class MyFrame extends JFrame {
         cp.add(panel2, BorderLayout.SOUTH);
         pack();
         setVisible(true);
+    }
+
+    public int RCnum(String a) {
+        int ans = 0;
+        try {
+            ans = Integer.parseInt(JOptionPane.showInputDialog("Shtypni numrin e " + a));
+            if (ans > 0) {
+                return ans;
+            } else {
+                JOptionPane.showMessageDialog(null, "bad input");
+                return RCnum(a);
+            }
+        } catch (HeadlessException | NumberFormatException e1) {
+            JOptionPane.showMessageDialog(null, "bad input");
+            return RCnum(a);
+        }
     }
 }

@@ -1,13 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package matrica;
 
 /**
  *
- * @author Sead Mejzini
+ * @author Sead Mejzini && Jon Klinaku
  */
 public class PanelContent {
 
@@ -24,10 +19,13 @@ public class PanelContent {
     public void calculateMatrixes() {
         Matrix tempM = (Matrix) (content[0][0]);
         boolean initial = true;
-        while (!(tempM.getRow() == 1 && tempM.getCol() == 1)) {
+        boolean end = false;
+        while (!end) {
             Object[] temp = kp.updateMatrix(initial);
-            tempM = (Matrix) (temp[0]);
-            content = addObject(content, temp);
+            if (!(areSame(content[content.length - 1], temp))) {
+                content = addObject(content, temp);
+            }
+            end = kp.getState();
             initial = !initial;
         }
     }

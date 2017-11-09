@@ -7,6 +7,6 @@ package matrica;
 public class Matrica {
 
     public static void main(String[] args) {
-        new MyFrame();
+        EntryFrame entryFrame = new EntryFrame();
     }
 }

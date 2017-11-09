@@ -2,7 +2,7 @@ package matrica;
 
 /**
  *
- * @author Sead Mejzini
+ * @author Sead Mejzini && Jon Klinaku
  */
 public class Matrix {
 
@@ -70,30 +70,22 @@ public class Matrix {
         return mat;
     }
 
-    public void printTest(Matrix m) {
-        double[][] temp = m.getContent();
-        for (double[] temp1 : temp) {
-            for (int j = 0; j < temp[0].length; j++) {
-                System.out.print(temp1[j] + "\t\t");
-            }
-            System.out.println("");
-        }
-    }
-
-    public void printText(Matrix[] m) {
-        for (int i = 0; i < m[0].getRow(); i++) {
-            for (int j = 0; j < m[0].getCol(); j++) {
-                System.out.print("( " + m[0].getContent()[i][j] + ",  " + m[1].getContent()[i][j] + " )");
-            }
-            System.out.println();
-        }
-    }
-
-    public int[] remove(int[] a, int i) {
-        int[] ans = new int[a.length - 1];
-        for (int j = 0; j < a.length - 1; j++) {
-            ans[j] = (i < j) ? a[j] : a[j + 1];
-        }
-        return ans;
-    }
+//    public void printTest(Matrix m) {
+//        double[][] temp = m.getContent();
+//        for (double[] temp1 : temp) {
+//            for (int j = 0; j < temp[0].length; j++) {
+//                System.out.print(temp1[j] + "\t\t");
+//            }
+//            System.out.println("");
+//        }
+//    }
+//
+//    public void printText(Matrix[] m) {
+//        for (int i = 0; i < m[0].getRow(); i++) {
+//            for (int j = 0; j < m[0].getCol(); j++) {
+//                System.out.print("( " + m[0].getContent()[i][j] + ",  " + m[1].getContent()[i][j] + " )");
+//            }
+//            System.out.println();
+//        }
+//    }
 }

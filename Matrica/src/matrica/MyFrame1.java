@@ -25,29 +25,23 @@ public class MyFrame1 extends JFrame {
         Container cp = getContentPane();
         cp.setLayout(new BorderLayout());
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-       JLabel label = new JLabel("Iteracioni i "+1);
+        
+        JLabel label = new JLabel("Matricat e dhena nga ana e shfrytezuesit");
         JPanel panel1 = new JPanel();
-         
         panel1.add(label);
-        panel1.setSize(this.getWidth(), 50);
-
         JPanel panel_21 = new MyPanel(k, true);
-       // panel_21.setSize((this.getWidth() / 3), 700);
-
         JPanel panel_22 = new MyPanel(k, false);
-        //panel_22.setSize(this.getWidth() / 3, 700);
 
         JPanel panel3 = new JPanel(new GridLayout(1, 2));
         panel3.add(panel_21);
         panel3.add(panel_22);
-
         cp.add(panel1, BorderLayout.NORTH);
         cp.add(panel3, BorderLayout.CENTER);
-        
-        Counter counter = new Counter(((MyPanel)panel_21).content.length);
-        
-        JButton b1 = new Button_back((MyPanel)panel_21,(MyPanel)panel_22 , counter, label);
-        JButton b2 = new Button_next((MyPanel)panel_21,(MyPanel)panel_22 , counter, label);
+
+        Counter counter = new Counter(((MyPanel) panel_21).content.length);
+
+        JButton b1 = new Button_back((MyPanel) panel_21, (MyPanel) panel_22, counter, label);
+        JButton b2 = new Button_next((MyPanel) panel_21, (MyPanel) panel_22, counter, label);
         JPanel panel4 = new JPanel(new FlowLayout());
         JPanel panel4_1 = new JPanel(new BorderLayout());
         panel4.setSize(this.getWidth(), 50);

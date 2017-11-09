@@ -38,7 +38,7 @@ public class Manipulimi_me_matrica {
         return -1;
     }
 
-    public boolean dominator_check(int i, boolean row, boolean isRegorously) {
+    private boolean dominator_check(int i, boolean row, boolean isRegorously) {
         boolean ans = true;
         int nr;
         if (row) {
@@ -58,7 +58,7 @@ public class Manipulimi_me_matrica {
         return ans;
     }
 
-    public boolean sequence_check_greater(double[] a, double[] b, boolean isRegorously) {
+    private boolean sequence_check_greater(double[] a, double[] b, boolean isRegorously) {
         boolean ans = true;
         for (int i = 0; i < a.length; i++) {
             if (isRegorously) {
@@ -70,7 +70,7 @@ public class Manipulimi_me_matrica {
         return ans;
     }
 
-    public boolean sequence_check_lesser(double[] a, double[] b, boolean isRegorously) {
+    private boolean sequence_check_lesser(double[] a, double[] b, boolean isRegorously) {
         boolean ans = true;
         for (int i = 0; i < a.length; i++) {
             if (isRegorously) {
@@ -82,7 +82,7 @@ public class Manipulimi_me_matrica {
         return ans;
     }
 
-    public boolean[] dominated_check(int i, boolean row, boolean isRegorously) {
+    private boolean[] dominated_check(int i, boolean row, boolean isRegorously) {
 
         int nr;
         if (row) {
@@ -192,7 +192,6 @@ public class Manipulimi_me_matrica {
                 sum[i] = rowSum(m.getContentCol(i));
             }
             tempS = findMin(sum, sum.length);
-            System.out.println(tempS);
             boolean allSame = true;
             for (int i = 0; i < sum.length; i++) {
                 ans[i] = tempS == sum[i] ? 1 : 0;
@@ -205,7 +204,7 @@ public class Manipulimi_me_matrica {
         return ans;
     }
 
-    public double findMin(double[] data, int size) {
+    private double findMin(double[] data, int size) {
         double temp;
         if (size == 1) {
             return data[0];
@@ -219,7 +218,7 @@ public class Manipulimi_me_matrica {
         }
     }
 
-    public double rowSum(double[] input) {
+    private double rowSum(double[] input) {
         double ans = 0.0;
         for (int i = 0; i < input.length; i++) {
             ans += input[i];
@@ -228,23 +227,3 @@ public class Manipulimi_me_matrica {
     }
 
 }
-//    public boolean isDominated(int j, boolean isRow) {
-//        boolean ans = true;
-//        if (isRow) {
-//            boolean[] temp = dominated_check(j, isRow);
-//            for (int i = 0; i < m.getRow(); i++) {
-//                if (i != j) {
-//                    ans = ans && temp[i];
-//                }
-//            }
-//        } else {
-//            ans = false;
-//            boolean[] temp = dominated_check(j, false);
-//            for (int i = 0; i < m.getCol(); i++) {
-//                if (i != j) {
-//                    ans = ans || temp[i];
-//                }
-//            }
-//        }
-//        return ans;
-//    }

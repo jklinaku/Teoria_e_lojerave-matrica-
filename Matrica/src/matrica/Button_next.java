@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package matrica;
 
 import java.awt.event.ActionEvent;
@@ -12,32 +7,32 @@ import javax.swing.JLabel;
 
 /**
  *
- * @author Sead Mejzini
+ * @author Sead Mejzini && Jon Klinaku
  */
 public class Button_next extends JButton implements ActionListener {
 
     private Counter counter;
-    private MyPanel panel;
+    private MyPanel panel1;
     private MyPanel panel2;
     private JLabel label;
 
-    public Button_next(MyPanel panel,MyPanel panel2, Counter counter, JLabel label) {
-        super("Next");
-        this.panel = panel;
+    public Button_next(MyPanel panel1, MyPanel panel2, Counter counter, JLabel label) {
+        super("NEXT");
+        this.panel1 = panel1;
         this.panel2 = panel2;
         this.counter = counter;
-        addActionListener(this);
         this.label = label;
+        addActionListener(this);
+
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         if (counter.add()) {
             System.out.println("hello");
-            label.setText("Iteracioni i "+(counter.getCount()+1));
-            panel.update(counter.getCount());
+            label.setText("Iteracioni i: " + counter.getCount());
+            panel1.update(counter.getCount());
             panel2.update(counter.getCount());
-            //panel.repaint();
         }
     }
 }
