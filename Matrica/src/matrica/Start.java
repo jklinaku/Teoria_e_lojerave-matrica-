@@ -27,7 +27,7 @@ public class Start extends JButton implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        JTextField jtf[][] = mf.jf;
+        ElementJTextField jtf[][] = mf.jf;
         ElementPanel ep[][] = mf.jp;
         double[][] temp1 = new double[jtf.length - 1][jtf[0].length - 1];
         double[][] temp2 = new double[jtf.length - 1][jtf[0].length - 1];

@@ -139,7 +139,13 @@ public class Manipulimi_me_matrica {
                     ans[i] = found ? 1 : 0;
                 }
             }
+            
         }
+        boolean temp = false;
+        for (int i = 0; i < ans.length; i++) {
+            temp = temp || ans[i] == 0;
+        }
+        ans[0] = temp ? ans[0] : 0;
         return ans;
     }
 
@@ -155,6 +161,11 @@ public class Manipulimi_me_matrica {
                 }
             }
         }
+        boolean temp = false;
+        for (int i = 0; i < ans.length; i++) {
+            temp = temp || ans[i] == 0;
+        }
+        ans[0] = temp ? ans[0] : 0;
         return ans;
     }
 

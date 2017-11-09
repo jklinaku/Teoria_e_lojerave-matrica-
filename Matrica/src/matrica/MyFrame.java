@@ -9,6 +9,8 @@ import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.GridLayout;
 import java.awt.HeadlessException;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -22,7 +24,7 @@ import javax.swing.JTextField;
  */
 public class MyFrame extends JFrame {
 
-    protected JTextField[][] jf;
+    protected ElementJTextField[][] jf;
     protected ElementPanel[][] jp;
 
     public MyFrame() {
@@ -36,7 +38,7 @@ public class MyFrame extends JFrame {
         labelPanel.add(label);
         labelPanel.setEnabled(true);
         JPanel panel1 = new JPanel(new GridLayout(row + 1, col + 1));
-        jf = new JTextField[row + 1][col + 1];
+        jf = new ElementJTextField[row + 1][col + 1];
         jp = new ElementPanel[row][col];
         for (int i = 0; i <= row; i++) {
             for (int j = 0; j <= col; j++) {
@@ -45,10 +47,10 @@ public class MyFrame extends JFrame {
                     panel1.add(label1);
                     //continue;
                 } else if (i == 0) {
-                    jf[0][j] = new JTextField();
+                    jf[0][j] = new ElementJTextField("S"+j);
                     panel1.add(jf[0][j]);
                 } else if (j == 0) {
-                    jf[i][0] = new JTextField();
+                    jf[i][0] = new ElementJTextField("S"+i);
                     panel1.add(jf[i][0]);
                 } else {
                     JTextField[] temp = {new JTextField(), new JTextField()};
@@ -82,4 +84,8 @@ public class MyFrame extends JFrame {
             return RCnum(a);
         }
     }
+
+    
+    
+  
 }
