@@ -37,8 +37,7 @@ public class ElementJTextField extends JTextField implements FocusListener {
     @Override
     public void focusLost(FocusEvent e) {
         if(this.getText().isEmpty()){
-                    setForeground(Color.gray);
-
+            setForeground(Color.gray);
             setText(text);
         }
     

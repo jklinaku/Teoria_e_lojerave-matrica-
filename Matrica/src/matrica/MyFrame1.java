@@ -29,19 +29,22 @@ public class MyFrame1 extends JFrame {
         JLabel label = new JLabel("Matricat e dhena nga ana e shfrytezuesit");
         JPanel panel1 = new JPanel();
         panel1.add(label);
-        JPanel panel_21 = new MyPanel(k, true);
-        JPanel panel_22 = new MyPanel(k, false);
+        PanelContent pc= new PanelContent(k);
+        IterationPanel panel_21 = new IterationPanel(pc);
+        TextPanel panel_22 = new TextPanel(pc);
+        GraphicPanel panel_23= new GraphicPanel(pc);
 
-        JPanel panel3 = new JPanel(new GridLayout(1, 2));
+        JPanel panel3 = new JPanel(new GridLayout(1,3));
         panel3.add(panel_21);
         panel3.add(panel_22);
+        panel3.add(panel_23);
         cp.add(panel1, BorderLayout.NORTH);
         cp.add(panel3, BorderLayout.CENTER);
 
-        Counter counter = new Counter(((MyPanel) panel_21).content.length);
+        Counter counter = new Counter(((IterationPanel) panel_21).content.length);
 
-        JButton b1 = new Button_back((MyPanel) panel_21, (MyPanel) panel_22, counter, label);
-        JButton b2 = new Button_next((MyPanel) panel_21, (MyPanel) panel_22, counter, label);
+        JButton b1 = new Button_back( panel_21, panel_22,panel_23, counter, label);
+        JButton b2 = new Button_next( panel_21, panel_22,panel_23, counter, label);
         JPanel panel4 = new JPanel(new FlowLayout());
         JPanel panel4_1 = new JPanel(new BorderLayout());
         panel4.setSize(this.getWidth(), 50);

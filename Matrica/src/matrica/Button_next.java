@@ -12,14 +12,16 @@ import javax.swing.JLabel;
 public class Button_next extends JButton implements ActionListener {
 
     private Counter counter;
-    private MyPanel panel1;
-    private MyPanel panel2;
+    private IterationPanel panel1;
+    private TextPanel panel2;
+    private GraphicPanel panel3;
     private JLabel label;
 
-    public Button_next(MyPanel panel1, MyPanel panel2, Counter counter, JLabel label) {
+    public Button_next(IterationPanel panel1, TextPanel panel2,GraphicPanel panel3, Counter counter, JLabel label) {
         super("NEXT");
         this.panel1 = panel1;
         this.panel2 = panel2;
+        this.panel3 = panel3;
         this.counter = counter;
         this.label = label;
         addActionListener(this);
@@ -33,6 +35,7 @@ public class Button_next extends JButton implements ActionListener {
             label.setText("Iteracioni i: " + counter.getCount());
             panel1.update(counter.getCount());
             panel2.update(counter.getCount());
+            panel3.update(counter.getCount());
         }
     }
 }

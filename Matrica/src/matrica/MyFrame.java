@@ -53,7 +53,7 @@ public class MyFrame extends JFrame {
                     jf[i][0] = new ElementJTextField("S"+i);
                     panel1.add(jf[i][0]);
                 } else {
-                    JTextField[] temp = {new JTextField(), new JTextField()};
+                    ElementJTextField[] temp = {new ElementJTextField(""+((int)(Math.random()*19)-9)), new ElementJTextField(""+((int)(Math.random()*19)-9))};
                     jp[i - 1][j - 1] = new ElementPanel(temp);
                     panel1.add(jp[i - 1][j - 1]);
                 }
