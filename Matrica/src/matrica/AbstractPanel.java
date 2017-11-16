@@ -29,7 +29,7 @@ public abstract class AbstractPanel extends JPanel {
      //   pc = new PanelContent(kp);
     // pc=p;
         content = p.getContent();
-        setBorder(BorderFactory.createLineBorder(Color.black));
+     //   setBorder(BorderFactory.createLineBorder(Color.black));
         update(0);
     }
 

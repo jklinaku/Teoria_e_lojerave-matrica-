@@ -7,9 +7,9 @@ package matrica;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.EventListener;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 
 /**
  *
@@ -23,6 +23,7 @@ public class Start extends JButton implements ActionListener {
         super("START");
         this.mf = mf;
         addActionListener(this);
+         
     }
 
     @Override

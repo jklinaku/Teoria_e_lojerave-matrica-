@@ -70,6 +70,9 @@ public class Matrix {
         return mat;
     }
 
+    public double getElement(int i,int j){
+        return content[i][j];
+    }
 //    public void printTest(Matrix m) {
 //        double[][] temp = m.getContent();
 //        for (double[] temp1 : temp) {
