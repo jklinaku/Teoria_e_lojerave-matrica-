@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package matrica;
 
 import java.awt.Dimension;
@@ -15,112 +10,105 @@ import java.awt.Graphics;
 public class GraphicPanel extends AbstractPanel {
 
     boolean player1 = true;
-    private int w, h, delta, x, y, Oy;
+    private int w, h, delta, x, y;
     private double min, max;
-    private Graphics g;
     private double[] y0, y1;
+    private boolean both = true;
 
     public GraphicPanel(PanelContent p) {
         super(p);
-
     }
 
     @Override
     public void paintComponent(Graphics g) {
-//        g.translate(0, 0);
+        super.paintComponent(g);
+        g.translate(0, 10);
         Dimension size = getSize();
         delta = 15;
-        Oy = h - delta;
         h = size.height;
         w = size.width;
         x = w - 2 * delta;
         y = h - 2 * delta;
-        max = max(y0, y1);
-        min = min(y0, y1);
-        System.out.println(max);
-        System.out.println(min);
-        double distanca;
-        int state;
-        if (max < 0) {
-            state=1;
-            distanca = min;
-        } else if (min > 0) {
-            state=-1;
-            distanca = max;
-        } else {
-            state=0;
-            distanca = Math.abs(max - min);
-        }
-        double njesia = (y) / distanca;
-        Oy = (int) (njesia * max);
-
-        //vizaton boshtin koordinativ
-        g.drawLine(delta, 0, delta, h);
-        // g.drawLine(w-delta, delta, w-delta,h-delta);  
-
-        g.drawString("O", delta - 9, Oy + 11 + delta);
-        g.drawString("1", w - delta - 3, Oy + 11 + delta);
-        g.drawLine(0, Oy + delta, w - delta, Oy + delta);
-        
-        for (int i = 0, j = (int) max; i <= Math.ceil(distanca); i++, j--) {
-
-            int b = (int) (njesia * i);
-            if (j > 0) {
-                g.drawString(j + "", delta - 11, b + 6 + delta);
-            } else if (j < 0) {
-                g.drawString(j + "", delta - 15, b + 6 + delta);
+        try {
+            max = max(y0, y1);
+            min = min(y0, y1);
+            double distanca;
+            if (max < 0) {
+                max = 0;
+                distanca = min;
+                g.translate(delta, delta);
+            } else if (min > 0) {
+                distanca = max;
+                min = 0;
+                g.translate(delta, y + delta);
+            } else {
+                distanca = Math.abs(max - min);
+                g.translate(delta, (int) ((y * max) / distanca));
             }
-            g.drawLine(delta - 3, b + delta, delta + 3, b + delta);
+            double njesia = (y) / distanca;
 
-        }
-        double[] a = new double[y0.length];
-        double[] b = new double[y1.length];
-        for(int i=0;i<y0.length;i++){
-            switch (state) {
-                case 0:
-                    a[i]=y0[i]+distanca-min(y0,y1);
-                    b[i]=y1[i]+distanca-max(y1,y0);
-                    break;
-                default:
-                    a[i]=y0[i]-max(y1,y0);
-                    b[i]=y1[i]-min(y1,y0);
-                    break;
+            //vizaton boshtin koordinativ
+            g.drawLine(delta, -(int) (max * njesia) - delta, delta, Math.abs((int) (min * njesia)) + delta);
+            g.drawLine(x - delta, -(int) (max * njesia) - delta, x - delta, Math.abs((int) (min * njesia)) + delta);
+            // g.drawLine(w-delta, delta, w-delta,h-delta);  
+
+            g.drawString("0", delta - 9, 11);
+            g.drawString("1", x - 3, 11);
+            g.drawLine(0, 0, x, 0);
+
+            //vendosja e numrave anash boshtit
+            for (int i = 1; i < (int) max + 1; i++) {
+                g.drawString(i + " -", delta - 12, -(int) (njesia * i) + 5);
+                g.drawString("-" + i, x - delta - 2, -(int) (njesia * i) + 5);
             }
-            
+            for (int i = 1; i < (int) Math.abs(min) + 1; i++) {
+                g.drawString("-" + i + " -", delta - 15, (int) (njesia * i) + 5);
+                g.drawString("- -" + i, x - delta - 2, (int) (njesia * i) + 5);
+            }
+
+            for (int i = 0; i < y0.length; i++) {
+                g.drawLine(delta, -(int) (y0[i] * njesia), x - delta, -(int) (y1[i] * njesia));
+            }
+        } catch (Exception e) {
+            g.drawString("Matrica te papershtatshme", 20, 30);
         }
-        for(int i=0;i<y0.length;i++){
-            g.drawLine(delta,(int) ((max(a,a)-a[i])*njesia)+delta, x+delta, (int) ((max(b,b)-b[i])*njesia)+delta);
-        }
-      
-
-        
-
-
+        this.repaint();
     }
 
     @Override
     public void update(int count) {
-
+        System.err.println("Jemi ka e printojm numrin: " + count);
         Object[] temp = content[count];
         Matrix[] m = new Matrix[2];
         m[0] = (Matrix) (temp[0]);
-        y0 = new double[m[0].getRow()];
-        y1 = new double[m[0].getRow()];
-
-        for (int i = 0; i < m[0].getRow(); i++) {
-            y0[i] = m[0].getElement(i, 0);
-            y1[i] = m[0].getElement(i, 1);
-
+        m[1] = (Matrix) (temp[1]);
+        both = m[0].getCol() == 2 && m[0].getRow() == 2;
+        if (player1 && m[0].getCol() == 2 && m[0].getRow() > 0) {
+            update1(m[0]);
+        } else if (!player1 && m[0].getRow() == 2 && m[0].getCol() > 0) {
+            update1(m[1]);
         }
 
     }
 
-    private void update1() {
+    private void update1(Matrix m) {
+        if (player1) {
+            y0 = new double[m.getRow()];
+            y1 = new double[m.getRow()];
 
-    }
+            for (int i = 0; i < m.getRow(); i++) {
+                y0[i] = m.getElement(i, 0);
+                y1[i] = m.getElement(i, 1);
+            }
+        } else {
+            y0 = new double[m.getCol()];
+            y1 = new double[m.getCol()];
 
-    private void update2() {
-
+            for (int i = 0; i < m.getCol(); i++) {
+                y0[i] = m.getElement(0, i);
+                y1[i] = m.getElement(1, i);
+            }
+        }
     }
 
     private double max(double[] a, double[] b) {
@@ -143,5 +131,17 @@ public class GraphicPanel extends AbstractPanel {
         }
 
         return Math.min(temp1, temp2);
+    }
+
+    public boolean isBoth() {
+        return both;
+    }
+
+    public boolean isPlayer1() {
+        return player1;
+    }
+
+    public void setPlayer1(boolean player1) {
+        this.player1 = player1;
     }
 }

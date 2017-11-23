@@ -9,7 +9,6 @@ import java.awt.Color;
 import java.awt.GridLayout;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
-import javax.swing.JScrollPane;
 
 /**
  *
@@ -24,13 +23,13 @@ public class IterationPanel extends AbstractPanel{
     @Override
     public void update(int count) {
         removeAll();
+        System.err.println("printojm:" + count);
         Object[] temp = content[count];
         Matrix[] m = new Matrix[2];
         m[0] = (Matrix) (temp[0]);
         m[1] = (Matrix) (temp[1]);
         String[] s1 = (String[]) temp[2];
         String[] s2 = (String[]) temp[3];
-        String[][] a = {s1, s2};
         System.out.println(count);
         setLayout(new GridLayout(s1.length + 1, s2.length + 1));
        
@@ -57,7 +56,6 @@ public class IterationPanel extends AbstractPanel{
                 }
             }
         }
-        
         revalidate();
     }
     

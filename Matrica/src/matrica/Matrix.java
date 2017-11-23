@@ -73,15 +73,15 @@ public class Matrix {
     public double getElement(int i,int j){
         return content[i][j];
     }
-//    public void printTest(Matrix m) {
-//        double[][] temp = m.getContent();
-//        for (double[] temp1 : temp) {
-//            for (int j = 0; j < temp[0].length; j++) {
-//                System.out.print(temp1[j] + "\t\t");
-//            }
-//            System.out.println("");
-//        }
-//    }
+    public void printTest(Matrix m) {
+        double[][] temp = m.getContent();
+        for (double[] temp1 : temp) {
+            for (int j = 0; j < temp[0].length; j++) {
+                System.out.print(temp1[j] + "\t\t");
+            }
+            System.out.println("");
+        }
+    }
 //
 //    public void printText(Matrix[] m) {
 //        for (int i = 0; i < m[0].getRow(); i++) {

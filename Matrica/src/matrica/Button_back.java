@@ -17,7 +17,7 @@ public class Button_back extends JButton implements ActionListener {
     private GraphicPanel panel3;
     private JLabel label;
 
-    public Button_back(IterationPanel panel1, TextPanel panel2,GraphicPanel panel3, Counter counter, JLabel label) {
+    public Button_back(IterationPanel panel1, TextPanel panel2, GraphicPanel panel3, Counter counter, JLabel label) {
         super("BACK");
         this.panel1 = panel1;
         this.panel2 = panel2;
@@ -34,7 +34,6 @@ public class Button_back extends JButton implements ActionListener {
             panel1.update(counter.getCount());
             panel2.update(counter.getCount());
             panel3.update(counter.getCount());
-
         }
     }
 }

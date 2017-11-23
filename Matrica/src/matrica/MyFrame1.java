@@ -33,7 +33,7 @@ public class MyFrame1 extends JFrame {
         IterationPanel panel_21 = new IterationPanel(pc);
         TextPanel panel_22 = new TextPanel(pc);
         GraphicPanel panel_23= new GraphicPanel(pc);
-
+        
         JPanel panel3 = new JPanel(new GridLayout(1,3));
         panel3.add(panel_21);
         panel3.add(panel_22);
@@ -42,12 +42,13 @@ public class MyFrame1 extends JFrame {
         cp.add(panel3, BorderLayout.CENTER);
 
         Counter counter = new Counter(((IterationPanel) panel_21).content.length);
-
+        SwapButton sb = new SwapButton(panel_23);
         JButton b1 = new Button_back( panel_21, panel_22,panel_23, counter, label);
         JButton b2 = new Button_next( panel_21, panel_22,panel_23, counter, label);
         JPanel panel4 = new JPanel(new FlowLayout());
         JPanel panel4_1 = new JPanel(new BorderLayout());
         panel4.setSize(this.getWidth(), 50);
+        panel4.add(sb);
         panel4.add(b1);
         panel4.add(b2);
         panel4_1.add(panel4, BorderLayout.EAST);

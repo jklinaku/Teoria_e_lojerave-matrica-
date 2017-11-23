@@ -17,7 +17,6 @@ public class PanelContent {
     }
 
     public void calculateMatrixes() {
-        Matrix tempM = (Matrix) (content[0][0]);
         boolean initial = true;
         boolean end = false;
         while (!end) {

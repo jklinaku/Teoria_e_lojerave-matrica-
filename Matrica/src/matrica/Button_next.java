@@ -31,7 +31,6 @@ public class Button_next extends JButton implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (counter.add()) {
-            System.out.println("hello");
             label.setText("Iteracioni i: " + counter.getCount());
             panel1.update(counter.getCount());
             panel2.update(counter.getCount());
