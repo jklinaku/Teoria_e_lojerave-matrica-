@@ -8,7 +8,6 @@ package matrica;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
-import javax.swing.JLabel;
 
 /**
  *
@@ -21,16 +20,13 @@ public class SwapButton extends JButton implements ActionListener {
     public SwapButton(GraphicPanel gp) {
         super("Swap");
         this.gp = gp;
-        //setEnabled(gp.isBoth());
         addActionListener(this);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        boolean temp = gp.isBoth();
         if (gp.isBoth()) {
-            //setEnabled(true);
-            gp.setPlayer1(!gp.isPlayer1());
+            gp.update(gp.getCount());
         }
     }
 }

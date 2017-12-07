@@ -11,7 +11,7 @@ public class PanelContent {
 
     public PanelContent(Kalkulimi_i_problemit kp) {
         this.kp = kp;
-        content = new Object[1][4];
+        content = new Object[1][6];
         content[0] = kp.getPrimaryMatrix();
         this.calculateMatrixes();
     }

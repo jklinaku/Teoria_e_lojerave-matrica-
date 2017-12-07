@@ -102,32 +102,6 @@ public class Manipulimi_me_matrica {
         return ans;
     }
 
-    public int[][] dominated_row() {
-        int[][] ans = new int[m.getRow()][m.getRow()];
-        for (int i = 0; i < ans.length; i++) {
-            boolean[] a = this.dominated_check(i, true, true);
-            for (int k = 0; k < ans.length; k++) {
-                ans[i][k] = a[k] ? 1 : 0;
-                System.out.print(ans[i][k]);
-            }
-            System.out.println();
-        }
-        return ans;
-    }
-
-    public int[][] dominated_col() {
-        int[][] ans = new int[m.getCol()][m.getCol()];
-        for (int i = 0; i < ans.length; i++) {
-            boolean[] a = this.dominated_check(i, false, true);
-            for (int k = 0; k < ans.length; k++) {
-                ans[i][k] = a[k] ? 1 : 0;
-                System.out.print(ans[i][k]);
-            }
-            System.out.println();
-        }
-        return ans;
-    }
-
     public int[] dominated_rows(boolean isRegorously) {
         int[] ans = new int[m.getRow()];
         for (int i = 0; i < ans.length; i++) {
@@ -139,7 +113,7 @@ public class Manipulimi_me_matrica {
                     ans[i] = found ? 1 : 0;
                 }
             }
-            
+
         }
         boolean temp = false;
         for (int i = 0; i < ans.length; i++) {
@@ -237,4 +211,29 @@ public class Manipulimi_me_matrica {
         return ans;
     }
 
+    public int[][] dominated_row() {
+        int[][] ans = new int[m.getRow()][m.getRow()];
+        for (int i = 0; i < ans.length; i++) {
+            boolean[] a = this.dominated_check(i, true, true);
+            for (int k = 0; k < ans.length; k++) {
+                ans[i][k] = a[k] ? 1 : 0;
+                System.out.print(ans[i][k]);
+            }
+            System.out.println();
+        }
+        return ans;
+    }
+
+    public int[][] dominated_col() {
+        int[][] ans = new int[m.getCol()][m.getCol()];
+        for (int i = 0; i < ans.length; i++) {
+            boolean[] a = this.dominated_check(i, false, true);
+            for (int k = 0; k < ans.length; k++) {
+                ans[i][k] = a[k] ? 1 : 0;
+                System.out.print(ans[i][k]);
+            }
+            System.out.println();
+        }
+        return ans;
+    }
 }

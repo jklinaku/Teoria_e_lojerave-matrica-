@@ -33,4 +33,8 @@ public class Counter {
     public int getCount() {
         return count;
     }
+
+    public int getMax() {
+        return max;
+    }
 }

@@ -1,5 +1,6 @@
 package matrica;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 
@@ -9,14 +10,17 @@ import java.awt.Graphics;
  */
 public class GraphicPanel extends AbstractPanel {
 
-    boolean player1 = true;
+    boolean player1, player2;
     private int w, h, delta, x, y;
     private double min, max;
     private double[] y0, y1;
-    private boolean both = true;
+    private boolean both;
+    private int count;
+    private boolean firstTime = true;
 
     public GraphicPanel(PanelContent p) {
         super(p);
+        count = 0;
     }
 
     @Override
@@ -35,12 +39,12 @@ public class GraphicPanel extends AbstractPanel {
             double distanca;
             if (max < 0) {
                 max = 0;
-                distanca = min;
+                distanca = Math.abs(min);
                 g.translate(delta, delta);
             } else if (min > 0) {
                 distanca = max;
                 min = 0;
-                g.translate(delta, y + delta);
+                g.translate(delta, y);
             } else {
                 distanca = Math.abs(max - min);
                 g.translate(delta, (int) ((y * max) / distanca));
@@ -65,7 +69,6 @@ public class GraphicPanel extends AbstractPanel {
                 g.drawString("-" + i + " -", delta - 15, (int) (njesia * i) + 5);
                 g.drawString("- -" + i, x - delta - 2, (int) (njesia * i) + 5);
             }
-
             for (int i = 0; i < y0.length; i++) {
                 g.drawLine(delta, -(int) (y0[i] * njesia), x - delta, -(int) (y1[i] * njesia));
             }
@@ -77,18 +80,32 @@ public class GraphicPanel extends AbstractPanel {
 
     @Override
     public void update(int count) {
-        System.err.println("Jemi ka e printojm numrin: " + count);
+        this.count = count;
         Object[] temp = content[count];
         Matrix[] m = new Matrix[2];
         m[0] = (Matrix) (temp[0]);
         m[1] = (Matrix) (temp[1]);
         both = m[0].getCol() == 2 && m[0].getRow() == 2;
-        if (player1 && m[0].getCol() == 2 && m[0].getRow() > 0) {
-            update1(m[0]);
-        } else if (!player1 && m[0].getRow() == 2 && m[0].getCol() > 0) {
-            update1(m[1]);
+        if (firstTime && both) {
+            player1 = true;
+            player2 = false;
+            firstTime = false;
+        } else if (!firstTime && both) {
+            player1 = false;
+            player2 = true;
+            firstTime = true;
+        } else {
+            player1 = m[0].getCol() == 2;
+            player2 = m[0].getRow() == 2;
         }
-
+        if (player1 && m[0].getRow() > 0) {
+            update1(m[0]);
+        } else if (player2 && m[0].getCol() > 0) {
+            update1(m[1]);
+        } else {
+            y0 = new double[0];
+            y1 = new double[0];
+        }
     }
 
     private void update1(Matrix m) {
@@ -137,11 +154,7 @@ public class GraphicPanel extends AbstractPanel {
         return both;
     }
 
-    public boolean isPlayer1() {
-        return player1;
-    }
-
-    public void setPlayer1(boolean player1) {
-        this.player1 = player1;
+    public int getCount() {
+        return count;
     }
 }

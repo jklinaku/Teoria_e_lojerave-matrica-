@@ -11,7 +11,7 @@ public class Kalkulimi_i_problemit {
     private Manipulimi_me_matrica[] mm = new Manipulimi_me_matrica[2];
     private String[] l1;
     private String[] l2;
-    private final Object[] primaryMatrix = new Object[4];
+    private final Object[] primaryMatrix = new Object[6];
 
     private boolean state = false;
 
@@ -24,12 +24,19 @@ public class Kalkulimi_i_problemit {
         primaryMatrix[1] = m[1];
         primaryMatrix[2] = l1;
         primaryMatrix[3] = l2;
+        primaryMatrix[4] = primaryMatrix[5] = null;
+
         this.l1 = l1;
         this.l2 = l2;
     }
 
     public Object[] updateMatrix(boolean b) {
-        Object[] ans = new Object[4];
+        Matrix ma = new Matrix();
+        Object[] ans = new Object[6];
+        ans[5] = b;
+        System.err.println("");
+        ma.printTest(mm[0].getM());
+        ma.printTest(mm[1].getM());
 
         if (b) {
             int dr = mm[0].dominant_row(b);
@@ -37,13 +44,21 @@ public class Kalkulimi_i_problemit {
             if (dr != -1) {
                 System.out.println("A1");
                 this.isDominatorUpdate(dr, b);
+                ans[4] = dr;
             } else if (mm[0].hasDominated(domrs)) {
                 System.out.println("A2");
+                int[][] em = mm[0].dominated_row();
+
                 this.isDominatedOrHasLowestChances(domrs, b);
+
+                ans[4] = em;
+
+
             } else {
                 System.out.println("A3");
                 int[] sameSum = mm[0].smallestSum(b);
                 this.isDominatedOrHasLowestChances(sameSum, b);
+                ans[4] = sameSum;
             }
         } else {
             int dr = mm[1].dominant_col(true);
@@ -51,13 +66,24 @@ public class Kalkulimi_i_problemit {
             if (dr != -1) {
                 System.out.println("B1");
                 this.isDominatorUpdate(dr, b);
+                ans[4] = dr;
             } else if (mm[1].hasDominated(domrs)) {
                 System.out.println("B2");
+                int[][] em = mm[1].dominated_col();
                 this.isDominatedOrHasLowestChances(domrs, b);
+                ans[4] = em;
+//
+//                for (int i = 0; i < em.length; i++) {
+//                    for (int j = 0; j < em[0].length; j++) {
+//                        System.out.print(em[i][j]);
+//                    }
+//                    System.out.println();
+//                }
             } else {
                 System.out.println("B3");
                 int[] sameSum = mm[1].smallestSum(b);
                 this.isDominatedOrHasLowestChances(sameSum, b);
+                ans[4] = sameSum;
             }
         }
         ans[0] = m[0];

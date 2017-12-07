@@ -1,12 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package matrica;
 
 import java.awt.BorderLayout;
 import java.awt.Container;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import javax.swing.JButton;
@@ -25,16 +21,17 @@ public class MyFrame1 extends JFrame {
         Container cp = getContentPane();
         cp.setLayout(new BorderLayout());
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        
+
         JLabel label = new JLabel("Matricat e dhena nga ana e shfrytezuesit");
         JPanel panel1 = new JPanel();
         panel1.add(label);
-        PanelContent pc= new PanelContent(k);
+        PanelContent pc = new PanelContent(k);
+
         IterationPanel panel_21 = new IterationPanel(pc);
         TextPanel panel_22 = new TextPanel(pc);
-        GraphicPanel panel_23= new GraphicPanel(pc);
-        
-        JPanel panel3 = new JPanel(new GridLayout(1,3));
+        GraphicPanel panel_23 = new GraphicPanel(pc);
+
+        JPanel panel3 = new JPanel(new GridLayout(1, 3));
         panel3.add(panel_21);
         panel3.add(panel_22);
         panel3.add(panel_23);
@@ -43,8 +40,8 @@ public class MyFrame1 extends JFrame {
 
         Counter counter = new Counter(((IterationPanel) panel_21).content.length);
         SwapButton sb = new SwapButton(panel_23);
-        JButton b1 = new Button_back( panel_21, panel_22,panel_23, counter, label);
-        JButton b2 = new Button_next( panel_21, panel_22,panel_23, counter, label);
+        JButton b1 = new Button_back(panel_21, panel_22, panel_23, counter, label, sb);
+        JButton b2 = new Button_next(panel_21, panel_22, panel_23, counter, label, sb);
         JPanel panel4 = new JPanel(new FlowLayout());
         JPanel panel4_1 = new JPanel(new BorderLayout());
         panel4.setSize(this.getWidth(), 50);
@@ -52,8 +49,10 @@ public class MyFrame1 extends JFrame {
         panel4.add(b1);
         panel4.add(b2);
         panel4_1.add(panel4, BorderLayout.EAST);
+
         cp.add(panel4_1, BorderLayout.SOUTH);
-        pack();
+
+        setSize(new Dimension(700, 480));
         setVisible(true);
     }
 }
