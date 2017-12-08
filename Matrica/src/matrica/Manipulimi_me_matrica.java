@@ -214,7 +214,7 @@ public class Manipulimi_me_matrica {
     public int[][] dominated_row() {
         int[][] ans = new int[m.getRow()][m.getRow()];
         for (int i = 0; i < ans.length; i++) {
-            boolean[] a = this.dominated_check(i, true, true);
+            boolean[] a = this.dominated_check(i, true, false);
             for (int k = 0; k < ans.length; k++) {
                 ans[i][k] = a[k] ? 1 : 0;
                 System.out.print(ans[i][k]);
@@ -227,7 +227,7 @@ public class Manipulimi_me_matrica {
     public int[][] dominated_col() {
         int[][] ans = new int[m.getCol()][m.getCol()];
         for (int i = 0; i < ans.length; i++) {
-            boolean[] a = this.dominated_check(i, false, true);
+            boolean[] a = this.dominated_check(i, false, false);
             for (int k = 0; k < ans.length; k++) {
                 ans[i][k] = a[k] ? 1 : 0;
                 System.out.print(ans[i][k]);

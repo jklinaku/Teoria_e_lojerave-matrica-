@@ -31,8 +31,8 @@ public class TextPanel extends AbstractPanel {
 
         Object el = null, t = null;
         try {
-            el = content[count + 1][4];
-            t = content[count + 1][5];
+            el = content[count+1 ][4];
+            t = content[count +1][5];
 
             if (count == 0) {
                 if (s1.length == s2.length) {
@@ -78,32 +78,30 @@ public class TextPanel extends AbstractPanel {
                     ta.append(" Asnjera nga strategjite e lojtarit te pare nuk eshte rigorozisht dominuese ndaj te gjitha strategjive tjera per lojtarin e pare.");
                     for (int i = 0; i < s1.length; i++) {
                         int d = dominates(em[i]);
-                        int c = 0;
-                        if (d == 0) {
+                        int c = 1;
+                        if (d == 1) {
                             continue;
                         }
                         ta.append(" Strategjia " + s1[i] + "dominon strategjite: ");
-                        for (int j = 0; j < s1.length; j++) {
-
-                            if (em[i][j] == 1 && c != d) {
-                                ta.append(s1[j] + ", ");
+                        for (int j = 0; j < s1.length ; j++) {
+                            if(i==j){continue;}
+                            if (em[i][j] == 1 ) {
+                                ta.append(s1[j] + " ");
                                 c++;
-                            } else if (em[i][j] == 1) {
-                                ta.append(s1[j] + ".\n");
-                            }
+                            } 
                         }
                     }
                 } else {
                     ta.append(" Asnjera nga strategjite e lojtarit te dyte nuk eshte rigorozisht dominuese ndaj te gjitha strategjive tjera per lojtarin e dyte. ");
                     for (int i = 0; i < s2.length; i++) {
                         int d = dominates(em[i]);
-                        int c = 0;
-                        if (d == 0) {
+                        int c = 1;
+                        if (d == 1) {
                             continue;
                         }
                         ta.append(" Strategjia " + s2[i] + "dominon strategjite: ");
-                        for (int j = 0; j < s2.length; j++) {
-
+                        for (int j = 0; j < s2.length ; j++) {
+                            if(i==j){continue;}
                             if (em[i][j] == 1 && c != d) {
                                 ta.append(s2[j] + ", ");
                                 c++;
