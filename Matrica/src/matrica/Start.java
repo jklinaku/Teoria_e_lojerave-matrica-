@@ -1,4 +1,3 @@
-
 package matrica;
 
 import java.awt.event.ActionEvent;
@@ -8,7 +7,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Sead Mejzini
+ * @author Sead Mejzini && Jon Klinaku
  */
 public class Start extends JButton implements ActionListener {
 
@@ -18,7 +17,7 @@ public class Start extends JButton implements ActionListener {
         super("START");
         this.mf = mf;
         addActionListener(this);
-         
+
     }
 
     @Override

@@ -1,4 +1,3 @@
-
 package matrica;
 
 import java.awt.Color;
@@ -8,10 +7,10 @@ import javax.swing.JLabel;
 
 /**
  *
- * @author Jon
+ * @author Sead Mejzini && Jon Klinaku
  */
-public class IterationPanel extends AbstractPanel{
-    
+public class IterationPanel extends AbstractPanel {
+
     public IterationPanel(PanelContent p) {
         super(p);
     }
@@ -28,7 +27,7 @@ public class IterationPanel extends AbstractPanel{
         String[] s2 = (String[]) temp[3];
         System.out.println(count);
         setLayout(new GridLayout(s1.length + 1, s2.length + 1));
-       
+
         for (int i = 0; i <= s1.length; i++) {
             for (int j = 0; j <= s2.length; j++) {
                 if (i == 0 && j == 0) {
@@ -48,7 +47,7 @@ public class IterationPanel extends AbstractPanel{
                     ElementPanel ep = new ElementPanel(temp1);
                     ep.setBorder(BorderFactory.createLineBorder(Color.black));
                     add(ep);
-                    
+
                 }
             }
         }

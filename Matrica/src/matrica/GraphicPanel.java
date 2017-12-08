@@ -1,12 +1,11 @@
 package matrica;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 
 /**
  *
- * @author Jon
+ * @author Sead Mejzini && Jon Klinaku
  */
 public class GraphicPanel extends AbstractPanel {
 

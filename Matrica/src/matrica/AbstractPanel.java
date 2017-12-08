@@ -5,7 +5,7 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author Sead Mejzini
+ * @author Sead Mejzini && Jon Klinaku
  */
 public abstract class AbstractPanel extends JPanel {
 

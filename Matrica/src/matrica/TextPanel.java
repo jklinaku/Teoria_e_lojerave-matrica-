@@ -5,7 +5,7 @@ import javax.swing.JTextArea;
 
 /**
  *
- * @author Jon
+ * @author Sead Mejzini && Jon Klinaku
  */
 public class TextPanel extends AbstractPanel {
 
@@ -23,16 +23,18 @@ public class TextPanel extends AbstractPanel {
         m[1] = (Matrix) (temp[1]);
         String[] s1 = (String[]) temp[2];
         String[] s2 = (String[]) temp[3];
+
         JTextArea ta = new JTextArea("");
         ta.setEditable(false);
         ta.setLineWrap(true);
         ta.setWrapStyleWord(true);
+
         JScrollPane scroller = new JScrollPane(ta, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 
         Object el = null, t = null;
         try {
-            el = content[count+1 ][4];
-            t = content[count +1][5];
+            el = content[count + 1][4];
+            t = content[count + 1][5];
 
             if (count == 0) {
                 if (s1.length == s2.length) {
@@ -61,61 +63,94 @@ public class TextPanel extends AbstractPanel {
 
             if (el instanceof Integer) {
                 if ((boolean) t) {
-                    ta.append("Strategjia " + s1[(int) (el)] + " eshte dominuese ndaj te gjithe strategjive tjera per lojtarin e pare.");
+                    ta.append("Strategjia " + s1[(int) (el)] + " eshte dominuese ndaj te gjithe strategjive"
+                                             + " tjera per lojtarin e pare.");
                 } else {
-                    ta.append("Strategjia " + s2[(int) (el)] + " eshte dominuese ndaj te gjithe strategjive tjera per lojtarin e dyte.");
+                    ta.append("Strategjia " + s2[(int) (el)] + " eshte dominuese ndaj te gjithe strategjive"
+                                             + " tjera per lojtarin e dyte.");
                 }
 
             } else if (el instanceof int[][]) {
                 int[][] em = (int[][]) el;
-                for (int i = 0; i < em.length; i++) {
-                    for (int j = 0; j < em[0].length; j++) {
-                        System.out.print(em[i][j]);
-                    }
-                    System.out.println();
-                }
+                em = transpose(em);
+//                for (int i = 0; i < em.length; i++) {
+//                    for (int j = 0; j < em[0].length; j++) {
+//                        System.out.print(em[i][j]);
+//                    }
+//                    System.out.println();
+//                }
                 if ((boolean) t) {
-                    ta.append(" Asnjera nga strategjite e lojtarit te pare nuk eshte rigorozisht dominuese ndaj te gjitha strategjive tjera per lojtarin e pare.");
+                    ta.append(" Asnjera nga strategjite e lojtarit te pare nuk eshte rigorozisht dominuese"
+                                             + " ndaj te gjitha strategjive tjera per lojtarin e pare.");
                     for (int i = 0; i < s1.length; i++) {
                         int d = dominates(em[i]);
-                        int c = 1;
                         if (d == 1) {
                             continue;
                         }
                         ta.append(" Strategjia " + s1[i] + "dominon strategjite: ");
-                        for (int j = 0; j < s1.length ; j++) {
-                            if(i==j){continue;}
-                            if (em[i][j] == 1 ) {
+                        for (int j = 0; j < s1.length; j++) {
+                            if (i == j) {
+                                continue;
+                            }
+                            if (em[i][j] == 1) {
                                 ta.append(s1[j] + " ");
-                                c++;
-                            } 
+                            }
                         }
+                        ta.append("\n");
                     }
                 } else {
-                    ta.append(" Asnjera nga strategjite e lojtarit te dyte nuk eshte rigorozisht dominuese ndaj te gjitha strategjive tjera per lojtarin e dyte. ");
+                    ta.append(" Asnjera nga strategjite e lojtarit te dyte nuk eshte rigorozisht dominuese"
+                                             + " ndaj te gjitha strategjive tjera per lojtarin e dyte. ");
                     for (int i = 0; i < s2.length; i++) {
                         int d = dominates(em[i]);
-                        int c = 1;
                         if (d == 1) {
                             continue;
                         }
                         ta.append(" Strategjia " + s2[i] + "dominon strategjite: ");
-                        for (int j = 0; j < s2.length ; j++) {
-                            if(i==j){continue;}
-                            if (em[i][j] == 1 && c != d) {
-                                ta.append(s2[j] + ", ");
-                                c++;
-                            } else if (em[i][j] == 1) {
-                                ta.append(s2[j] + ".\n");
+                        for (int j = 0; j < s2.length; j++) {
+                            if (i == j) {
+                                continue;
+                            }
+                            if (em[i][j] == 1) {
+                                ta.append(s2[j] + "  ");
                             }
                         }
+                        ta.append("\n");
                     }
                 }
             } else {
-                ta.append("hello");
+                int[] em = (int[]) el;
+                ta.append(" Asnjera nga strategjite e lojtarit te ");
+                if ((boolean) t) {
+                    ta.append("pare nuk eshte as rigorozisht dominuese e as nuk ka strategji te dominuar,"
+                                             + " prandaj bejm eleminimin e strategjive shumave te elementeve perkatese,"
+                                             + " ku shuma me e vogel largohet   .\n");
+                    ta.append("Strategjia-te: ");
+                    for (int i = 0; i < em.length; i++) {
+                        if (em[i] == 1) {
+                            ta.append(s1[i] + " ");
+                        }
+                    }
+                    ta.append("eleminohen!\n");
+                } else {
+                    ta.append("dyte nuk eshte as rigorozisht dominuese e as nuk ka strategji te dominuar,"
+                                             + " prandaj bejm eleminimin e strategjive shumave te elementeve perkatese,"
+                                             + " ku shuma me e vogel largohet   .\n");
+                    ta.append("Strategjia-te: ");
+                    for (int i = 0; i < em.length; i++) {
+                        if (em[i] == 1) {
+                            ta.append(s2[i] + " ");
+                        }
+                    }
+                    ta.append("eleminohen!\n");
+                }
             }
         } catch (Exception e) {
-            ta.append("Pas eleminimit iterativ te strategjive te dominuara dhe atyre me shance me te vogel arrijm ne perfundim se nese te dy lojtaret veprojn ne menyr racionale atehere lojtari i pare do te zgjedh strategjine: " + s1[0] + " , ndersa lojtari i dyte do te zgjedh strategjin: " + s2[0]);
+            ta.append("Pas eleminimit iterativ te strategjive dominuese,"
+                                     + "te dominuara si dhe atyre me shance me te vogel arrijm ne perfundim "
+                                     + "se nese te dy lojtaret veprojn ne menyr racionale atehere lojtari i pare"
+                                     + " do te zgjedh strategjine: " + s1[0] + " , ndersa lojtari i dyte do te "
+                                     + "zgjedh strategjin: " + s2[0]);
         }
 
         add(scroller);
@@ -130,10 +165,12 @@ public class TextPanel extends AbstractPanel {
         return counter;
     }
 
-    private int[] getCol(int[][] input, int j) {
-        int[] ans = new int[input[0].length];
+    private int[][] transpose(int[][] input) {
+        int[][] ans = new int[input.length][input[0].length];
         for (int i = 0; i < ans.length; i++) {
-            ans[i] = input[i][j];
+            for (int j = 0; j < ans[0].length; j++) {
+                ans[i][j] = input[j][i];
+            }
         }
         return ans;
     }

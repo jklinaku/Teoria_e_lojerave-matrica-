@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package matrica;
 
 import java.awt.Color;
@@ -12,22 +7,20 @@ import javax.swing.JTextField;
 
 /**
  *
- * @author jon_k
+ * @author Sead Mejzini && Jon Klinaku
  */
 public class ElementJTextField extends JTextField implements FocusListener {
-    private String text;
-    
 
+    private String text;
 
     public ElementJTextField(String text) {
         setForeground(Color.gray);
         setText(text);
-        
-        this.text=text;
+
+        this.text = text;
         addFocusListener(this);
     }
 
-    
     @Override
     public void focusGained(FocusEvent e) {
         this.selectAll();
@@ -36,9 +29,10 @@ public class ElementJTextField extends JTextField implements FocusListener {
 
     @Override
     public void focusLost(FocusEvent e) {
-        if(this.getText().isEmpty()){
+        if (this.getText().isEmpty()) {
             setForeground(Color.gray);
             setText(text);
         }
-    
-}}
+
+    }
+}

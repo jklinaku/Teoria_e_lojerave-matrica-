@@ -12,7 +12,7 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author Sead Mejzini
+ * @author Sead Mejzini && Jon Klinaku
  */
 public class MyFrame1 extends JFrame {
 

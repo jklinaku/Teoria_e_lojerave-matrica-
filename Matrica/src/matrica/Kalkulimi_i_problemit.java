@@ -34,9 +34,9 @@ public class Kalkulimi_i_problemit {
         Matrix ma = new Matrix();
         Object[] ans = new Object[6];
         ans[5] = b;
-        System.err.println("");
-        ma.printTest(mm[0].getM());
-        ma.printTest(mm[1].getM());
+//        System.err.println("");
+//        ma.printTest(mm[0].getM());
+//        ma.printTest(mm[1].getM());
 
         if (b) {
             int dr = mm[0].dominant_row(b);
@@ -48,12 +48,8 @@ public class Kalkulimi_i_problemit {
             } else if (mm[0].hasDominated(domrs)) {
                 System.out.println("A2");
                 int[][] em = mm[0].dominated_row();
-
                 this.isDominatedOrHasLowestChances(domrs, b);
-
                 ans[4] = em;
-
-
             } else {
                 System.out.println("A3");
                 int[] sameSum = mm[0].smallestSum(b);

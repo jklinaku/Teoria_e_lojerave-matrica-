@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package matrica;
 
 import java.awt.event.ActionEvent;
@@ -11,10 +6,12 @@ import javax.swing.JButton;
 
 /**
  *
- * @author Sead Mejzini
+ * @author Sead Mejzini && Jon Klinaku
  */
-public class NewMatrixButton extends JButton implements ActionListener{
+public class NewMatrixButton extends JButton implements ActionListener {
+
     private EntryFrame f;
+
     public NewMatrixButton(EntryFrame f) {
         super("New strategy");
         this.f = f;
@@ -26,5 +23,5 @@ public class NewMatrixButton extends JButton implements ActionListener{
         f.dispose();
         new MyFrame();
     }
-    
+
 }

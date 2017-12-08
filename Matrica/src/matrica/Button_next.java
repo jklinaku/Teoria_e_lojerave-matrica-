@@ -11,7 +11,7 @@ import javax.swing.JLabel;
  */
 public class Button_next extends JButton implements ActionListener {
 
-    private final Counter counter;
+    private Counter counter;
     private IterationPanel panel1;
     private TextPanel panel2;
     private GraphicPanel panel3;
